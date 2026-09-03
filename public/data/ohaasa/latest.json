@@ -7,7 +7,7 @@
     "url": "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
   },
   "status": "success",
-  "updatedAt": "2026-09-03T17:38:35.599194+09:00",
+  "updatedAt": "2026-09-03T18:21:47.416118+09:00",
   "fetch": {
     "ssl": "default system CA",
     "onairDate": "20260903",
@@ -25,10 +25,10 @@
   "fortune": {
     "rank": 4,
     "messageJa": "期待以上の成果をＧＥＴ 素早い決断が幸運のカギ",
-    "messageKo": null,
+    "messageKo": "기대 이상의 성과를 거두다. 신속한 결단이 행운의 열쇠",
     "lucky": {
       "itemJa": "ベルト",
-      "itemKo": null
+      "itemKo": "벨트"
     }
   },
   "allSigns": [
@@ -41,10 +41,10 @@
       "zodiacKo": "물병자리",
       "zodiacJa": "みずがめ座",
       "messageJa": "目標を達成できる予感♪ これまでの頑張りが報われそう さらなる高みを目指して進んで",
-      "messageKo": null,
+      "messageKo": "목표를 달성할 수 있을 것 같은 예감♪ 그동안의 노력이 결실을 맺을 것 같아요. 더 높은 곳을 향해 나아가자",
       "lucky": {
         "itemJa": "スニーカー",
-        "itemKo": null
+        "itemKo": "운동화"
       },
       "sourceFields": {
         "horoscope_detail_id": "35664",
@@ -61,10 +61,10 @@
       "zodiacKo": "사수자리",
       "zodiacJa": "いて座",
       "messageJa": "デートのお誘いがあるかも♥ 前向きに検討するとＧＯＯＤ",
-      "messageKo": null,
+      "messageKo": "데이트 제의가 들어올지도 몰라요♥ 긍정적으로 고려해 보면 좋아요",
       "lucky": {
         "itemJa": "串カツ",
-        "itemKo": null
+        "itemKo": "쿠시카츠"
       },
       "sourceFields": {
         "horoscope_detail_id": "35665",
@@ -81,10 +81,10 @@
       "zodiacKo": "사자자리",
       "zodiacJa": "しし座",
       "messageJa": "臨時収入がありウキウキ！ 欲しい物を購入してね",
-      "messageKo": null,
+      "messageKo": "예상치 못한 수입이 생겨 기분이 들뜬다! 원하는 물건을 사세요",
       "lucky": {
         "itemJa": "ミネラルウォーター",
-        "itemKo": null
+        "itemKo": "생수"
       },
       "sourceFields": {
         "horoscope_detail_id": "35666",
@@ -101,10 +101,10 @@
       "zodiacKo": "천칭자리",
       "zodiacJa": "てんびん座",
       "messageJa": "期待以上の成果をＧＥＴ 素早い決断が幸運のカギ",
-      "messageKo": null,
+      "messageKo": "기대 이상의 성과를 거두다. 신속한 결단이 행운의 열쇠",
       "lucky": {
         "itemJa": "ベルト",
-        "itemKo": null
+        "itemKo": "벨트"
       },
       "sourceFields": {
         "horoscope_detail_id": "35667",
@@ -121,10 +121,10 @@
       "zodiacKo": "쌍둥이자리",
       "zodiacJa": "ふたご座",
       "messageJa": "新たな道を切り開くチャンス 周囲との会話にヒントがあるかも",
-      "messageKo": null,
+      "messageKo": "새로운 길을 개척할 기회, 주변 사람들과의 대화에서 힌트를 얻을 수 있을지도 모릅니다",
       "lucky": {
         "itemJa": "ダンベル",
-        "itemKo": null
+        "itemKo": "덤벨"
       },
       "sourceFields": {
         "horoscope_detail_id": "35668",
@@ -141,10 +141,10 @@
       "zodiacKo": "황소자리",
       "zodiacJa": "おうし座",
       "messageJa": "上手な節約ができそう 昼食をお弁当にすると◎",
-      "messageKo": null,
+      "messageKo": "알뜰하게 절약할 수 있을 것 같아요. 점심을 도시락으로 해결하면 ◎",
       "lucky": {
         "itemJa": "写真",
-        "itemKo": null
+        "itemKo": "사진"
       },
       "sourceFields": {
         "horoscope_detail_id": "35669",
@@ -161,10 +161,10 @@
       "zodiacKo": "게자리",
       "zodiacJa": "かに座",
       "messageJa": "ステキな人から多くを学べる時 良いところはどんどん吸収しよう",
-      "messageKo": null,
+      "messageKo": "멋진 사람에게서 많은 것을 배울 수 있을 때, 좋은 점은 적극적으로 흡수하자",
       "lucky": {
         "itemJa": "野菜スープ",
-        "itemKo": null
+        "itemKo": "야채 수프"
       },
       "sourceFields": {
         "horoscope_detail_id": "35670",
@@ -181,10 +181,10 @@
       "zodiacKo": "전갈자리",
       "zodiacJa": "さそり座",
       "messageJa": "トラブルを未然に防げるかも 判断に迷ったら誰かに相談して",
-      "messageKo": null,
+      "messageKo": "문제를 미연에 방지할 수 있을지도 모릅니다. 판단이 서지 않을 때는 누군가에게 상담해 보세요.",
       "lucky": {
         "itemJa": "自転車",
-        "itemKo": null
+        "itemKo": "자전거"
       },
       "sourceFields": {
         "horoscope_detail_id": "35671",
@@ -201,10 +201,10 @@
       "zodiacKo": "물고기자리",
       "zodiacJa": "うお座",
       "messageJa": "周りに頼りすぎてしまう日 自分の力で乗り切る努力を",
-      "messageKo": null,
+      "messageKo": "주변에 너무 많이 의지하게 되는 날, 스스로의 힘으로 헤쳐 나가기 위해 노력하자",
       "lucky": {
         "itemJa": "青色",
-        "itemKo": null
+        "itemKo": "파란색"
       },
       "sourceFields": {
         "horoscope_detail_id": "35672",
@@ -221,10 +221,10 @@
       "zodiacKo": "양자리",
       "zodiacJa": "おひつじ座",
       "messageJa": "急な予定変更にアタフタ 落ち着いて対応すれば大丈夫",
-      "messageKo": null,
+      "messageKo": "갑작스러운 일정 변경에 허둥지둥… 침착하게 대처하면 괜찮아요",
       "lucky": {
         "itemJa": "鉢植え",
-        "itemKo": null
+        "itemKo": "화분"
       },
       "sourceFields": {
         "horoscope_detail_id": "35673",
@@ -241,10 +241,10 @@
       "zodiacKo": "처녀자리",
       "zodiacJa": "おとめ座",
       "messageJa": "お金の貸し借りに注意が必要 勇気を出してしっかり断って",
-      "messageKo": null,
+      "messageKo": "돈을 빌려주거나 빌릴 때는 주의가 필요합니다. 용기를 내어 단호하게 거절하세요.",
       "lucky": {
         "itemJa": "スコーン",
-        "itemKo": null
+        "itemKo": "스콘"
       },
       "sourceFields": {
         "horoscope_detail_id": "35674",
@@ -261,10 +261,10 @@
       "zodiacKo": "염소자리",
       "zodiacJa": "やぎ座",
       "messageJa": "すぐに怠けてしまいそう… 作業を後回しにするのはＮＧ 今やるべき事に向き合うように",
-      "messageKo": null,
+      "messageKo": "금방 게을러질 것 같아… 일을 미루는 건 안 돼. 지금 해야 할 일에 집중하도록 하자.",
       "lucky": {
         "itemJa": "カメラ",
-        "itemKo": null
+        "itemKo": "카메라"
       },
       "sourceFields": {
         "horoscope_detail_id": "35675",

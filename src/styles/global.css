@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');
+
 :root {
   --wish-green: #99F492;
   --wish-blue: #72D4F4;
@@ -34,8 +36,9 @@
   --paper-shadow: 5px 5px 0 rgba(4, 3, 4, 0.18),
     0 14px 20px rgba(4, 3, 4, 0.1);
   --outline: 3px solid var(--outline-dark);
-  --font-sans: system-ui, 'Segoe UI', Arial, sans-serif;
-  --font-rounded: ui-rounded, 'Hiragino Maru Gothic ProN', 'Arial Rounded MT Bold',
+  --font-korean: 'Gamja Flower', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-sans: 'Gamja Flower', system-ui, 'Segoe UI', Arial, sans-serif;
+  --font-rounded: 'Gamja Flower', ui-rounded, 'Hiragino Maru Gothic ProN', 'Arial Rounded MT Bold',
     system-ui, sans-serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 
@@ -339,48 +342,88 @@ button {
   color: var(--wish-black);
   font-size: clamp(0.98rem, 2vw, 1.12rem);
   line-height: 1.7;
-  font-family: 'Nanum Pen Script', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe Print', cursive;
-  font-weight: 500;
-  letter-spacing: 0.015em;
+  font-family: var(--font-korean);
+  font-weight: 400;
+  letter-spacing: 0;
   word-break: keep-all;
 }
 
 .ohaasa-trigger {
-  display: inline-grid;
-  justify-items: center;
-  gap: 0.18rem;
-  min-height: 2.8rem;
-  padding: 0.45rem 0.75rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 16.25rem);
+  min-height: 3.25rem;
+  padding: 0.62rem 2.15rem;
+  overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.46) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.46) 1px, transparent 1px),
-    var(--wish-blue);
-  background-size: 8px 8px;
-  border: 2px solid var(--wish-black);
-  color: var(--wish-black);
-  box-shadow: 3px 3px 0 var(--wish-black), 6px 6px 0 rgba(254, 179, 230, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74) 0 24%, transparent 25%),
+    linear-gradient(180deg, #ffe8f6 0%, var(--wish-pink) 100%);
+  border: 2px solid #ed78c6;
+  border-radius: 0.32rem;
+  color: #3f2635;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.52),
+    inset 0 -3px 0 rgba(237, 120, 198, 0.32),
+    0 3px 0 #d85dad,
+    2px 5px 0 rgba(4, 3, 4, 0.16);
   font-family: var(--font-rounded);
-  font-size: 0.9rem;
+  font-size: 1.02rem;
   font-weight: 900;
-  line-height: 1.2;
-  transform: rotate(1.2deg);
-  transition: transform 110ms steps(2, end), box-shadow 110ms steps(2, end);
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(0.8deg);
+  transition: filter 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.ohaasa-trigger::before,
+.ohaasa-trigger::after {
+  position: absolute;
+  top: 50%;
+  color: #fffafd;
+  font-family: var(--font-rounded);
+  font-size: 0.98rem;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #d85dad;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.ohaasa-trigger::before {
+  content: "♡";
+  left: 0.72rem;
+}
+
+.ohaasa-trigger::after {
+  content: "♡";
+  right: 0.72rem;
 }
 
 .ohaasa-trigger span {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+  font-family: 'Jua', sans-serif;
 }
 
 .ohaasa-trigger:hover {
-  transform: translateY(-2px) rotate(-1deg);
-  box-shadow: 4px 4px 0 var(--wish-black), 8px 8px 0 rgba(153, 244, 146, 0.7);
+  filter: brightness(1.03);
+  transform: translateY(-1px) rotate(0.8deg);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 0 rgba(237, 120, 198, 0.28),
+    0 4px 0 #d85dad,
+    2px 6px 0 rgba(4, 3, 4, 0.14);
 }
 
 .ohaasa-trigger:active {
-  transform: translate(2px, 2px) rotate(-1deg);
-  box-shadow: 1px 1px 0 var(--wish-black), 3px 3px 0 rgba(153, 244, 146, 0.7);
+  filter: brightness(0.99);
+  transform: translateY(2px) rotate(0.8deg);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.46),
+    inset 0 -1px 0 rgba(237, 120, 198, 0.26),
+    0 1px 0 #d85dad,
+    1px 2px 0 rgba(4, 3, 4, 0.14);
 }
 
 .ohaasa-trigger:focus-visible,
@@ -520,9 +563,9 @@ button {
   background: var(--wish-cream);
   border: 2px solid var(--wish-black);
   box-shadow: 3px 3px 0 var(--wish-pink);
-  font-family: 'Nanum Pen Script', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe Print', cursive;
+  font-family: var(--font-korean);
   font-size: clamp(0.95rem, 2vw, 1.08rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
 }
 
@@ -913,6 +956,81 @@ button.polaroid-card {
   font-weight: 900;
 }
 
+.ohaasa-reveal-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.85rem;
+  width: min(100%, 21rem);
+  min-height: 18.5rem;
+  padding: 1.2rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 24%, rgba(153, 244, 146, 0.72) 0 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 78% 68%, rgba(254, 179, 230, 0.74) 0 0.24rem, transparent 0.26rem),
+    var(--white);
+  border: 3px solid var(--wish-black);
+  box-shadow: 5px 5px 0 var(--wish-black), 9px 9px 0 rgba(114, 212, 244, 0.72);
+  transform: rotate(1deg);
+  font-family: var(--font-rounded);
+  font-weight: 900;
+}
+
+.ohaasa-reveal-badge {
+  padding: 0.22rem 0.58rem;
+  background: var(--wish-green);
+  border: 2px solid var(--wish-black);
+  box-shadow: 2px 2px 0 var(--wish-pink);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.ohaasa-reveal-card p {
+  margin: 0;
+  color: var(--wish-black);
+  font-size: clamp(1.45rem, 6vw, 2rem);
+  line-height: 1.15;
+  text-shadow: 2px 2px 0 rgba(254, 179, 230, 0.88);
+  word-break: keep-all;
+  animation: ohaasa-heartbeat-message 900ms ease both;
+}
+
+.ohaasa-reveal-sparkles {
+  display: flex;
+  gap: 0.7rem;
+  color: var(--wish-deep-blue);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+}
+
+.ohaasa-reveal-sparkles i {
+  display: block;
+  font-style: normal;
+  animation: ohaasa-reveal-bounce 760ms ease-in-out infinite;
+}
+
+.ohaasa-reveal-sparkles i:nth-child(2) {
+  color: var(--wish-pink);
+  animation-delay: 120ms;
+}
+
+.ohaasa-reveal-sparkles i:nth-child(3) {
+  color: var(--wish-green);
+  animation-delay: 240ms;
+}
+
+.ohaasa-result-reveal {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  animation: ohaasa-result-pop 520ms cubic-bezier(0.18, 0.9, 0.28, 1.2) both;
+}
+
 .ohaasa-zodiac-card {
   position: relative;
   z-index: 2;
@@ -989,7 +1107,7 @@ button.polaroid-card {
   box-shadow: 4px 4px 0 var(--wish-blue);
 }
 
-.ohaasa-message-card span,
+.ohaasa-message-card > span,
 .ohaasa-lucky span {
   justify-self: center;
   padding: 0.22rem 0.52rem;
@@ -1002,11 +1120,22 @@ button.polaroid-card {
 }
 
 .ohaasa-message-card p {
-  font-family: 'Nanum Pen Script', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe Print', cursive;
+  font-family: var(--font-korean);
   font-size: clamp(1.18rem, 4vw, 1.45rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.35;
   word-break: keep-all;
+}
+
+.ohaasa-message-ko {
+  display: grid;
+  gap: 0.22rem;
+  width: 100%;
+}
+
+.ohaasa-message-ko span {
+  display: block;
+  overflow-wrap: anywhere;
 }
 
 .ohaasa-lucky {
@@ -1030,6 +1159,143 @@ button.polaroid-card {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 900;
+}
+
+.ohaasa-source-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.28rem 0.52rem;
+  color: var(--text-secondary);
+  font-family: var(--font-rounded);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-decoration: none;
+  text-underline-offset: 0.18rem;
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.ohaasa-source-link:hover {
+  color: var(--wish-black);
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+.ohaasa-source-link:focus-visible {
+  outline: 3px solid var(--wish-black);
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.ohaasa-update-info {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.42rem;
+  width: min(100%, 20rem);
+}
+
+.ohaasa-update-toggle {
+  min-height: 2rem;
+  padding: 0.28rem 0.58rem;
+  background: #fffdf2;
+  border: 2px solid var(--wish-black);
+  border-radius: 0.2rem;
+  color: var(--wish-black);
+  box-shadow: 2px 2px 0 rgba(254, 179, 230, 0.86);
+  font-family: var(--font-rounded);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.1;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.ohaasa-update-toggle:hover {
+  background: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0 rgba(114, 212, 244, 0.78);
+}
+
+.ohaasa-update-toggle:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0 rgba(254, 179, 230, 0.86);
+}
+
+.ohaasa-update-panel {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-0.22rem);
+  transition: max-height 210ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.ohaasa-update-panel.is-open {
+  max-height: 18rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ohaasa-update-panel-inner {
+  display: grid;
+  gap: 0.42rem;
+  margin-top: 0.12rem;
+  padding: 0.68rem 0.72rem;
+  background: rgba(255, 253, 242, 0.96);
+  border: 2px solid var(--wish-black);
+  box-shadow: 3px 3px 0 rgba(114, 212, 244, 0.7);
+  color: var(--text-secondary);
+  font-family: var(--font-korean);
+  font-size: 0.8rem;
+  line-height: 1.38;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.ohaasa-update-panel-inner > span {
+  justify-self: center;
+  padding: 0.16rem 0.42rem;
+  background: var(--wish-pink);
+  border: 2px solid var(--wish-black);
+  box-shadow: 2px 2px 0 var(--wish-green);
+  color: var(--wish-black);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 900;
+}
+
+.ohaasa-update-panel-inner p,
+.ohaasa-update-panel-inner dl,
+.ohaasa-update-panel-inner dt,
+.ohaasa-update-panel-inner dd {
+  margin: 0;
+}
+
+.ohaasa-update-panel-inner dl {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.46rem 0.5rem;
+  background: var(--white);
+  border: 2px dotted var(--wish-black);
+}
+
+.ohaasa-update-panel-inner dl div {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.ohaasa-update-panel-inner dt {
+  color: var(--wish-black);
+  font-weight: 900;
+}
+
+.ohaasa-update-panel-inner dd {
+  overflow-wrap: anywhere;
 }
 
 .ohaasa-status-card {
@@ -1085,6 +1351,58 @@ button.polaroid-card {
   50% {
     transform: scale(1.12) rotate(8deg);
     opacity: 1;
+  }
+}
+
+@keyframes ohaasa-heartbeat-message {
+  0% {
+    opacity: 0;
+    transform: translateY(0.35rem) scale(0.92);
+  }
+
+  42% {
+    opacity: 1;
+    transform: translateY(-0.1rem) scale(1.05);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-0.16rem) scale(0.98);
+  }
+}
+
+@keyframes ohaasa-reveal-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.68;
+  }
+
+  50% {
+    transform: translateY(-0.28rem) scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes ohaasa-result-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(0.65rem) scale(0.96);
+  }
+
+  68% {
+    opacity: 1;
+    transform: translateY(-0.08rem) scale(1.015);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -1272,10 +1590,10 @@ button.polaroid-card {
   background: #fffdf2;
   border: 2px solid var(--wish-black);
   box-shadow: 3px 3px 0 var(--wish-blue);
-  font-family: 'Nanum Pen Script', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe Print', cursive;
+  font-family: var(--font-korean);
   font-size: clamp(0.92rem, 3vw, 1.04rem);
-  font-weight: 500;
-  letter-spacing: 0.015em;
+  font-weight: 400;
+  letter-spacing: 0;
   line-height: 1.45;
   text-align: center;
 }

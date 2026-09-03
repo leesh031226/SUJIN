@@ -12,6 +12,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
+SOURCE_PAGE_URL = "https://www.asahi.co.jp/ohaasa/week/horoscope/"
 SOURCE_URL = "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
 DEEPL_TRANSLATE_URL = "https://api-free.deepl.com/v2/translate"
 OUTPUT_DIR = Path("public/data/ohaasa")
@@ -79,6 +80,9 @@ def is_valid_current_latest(path, expected_date, require_translations=False):
     if not is_valid_saved_record(data, expected_date):
         return False
 
+    if not has_source_url(data):
+        return False
+
     if require_translations and not has_required_translations(data):
         return False
 
@@ -134,6 +138,11 @@ def has_required_translations(data):
             return False
 
     return True
+
+
+def has_source_url(data):
+    source_url = data.get("sourceUrl")
+    return isinstance(source_url, str) and source_url.startswith(("https://", "http://"))
 
 
 def fetch_official_json():
@@ -411,6 +420,7 @@ def build_output(latest, signs, libra, ssl_mode):
             "type": "official-json",
             "url": SOURCE_URL,
         },
+        "sourceUrl": SOURCE_PAGE_URL,
         "status": "success",
         "updatedAt": updated_at,
         "fetch": {
@@ -460,7 +470,8 @@ def atomic_write_json(path, data):
 
 def save_archive_if_needed(archive_path, output):
     if archive_path.exists():
-        if is_valid_saved_record(load_json_file(archive_path), output["date"]):
+        archive_data = load_json_file(archive_path)
+        if is_valid_saved_record(archive_data, output["date"]) and has_source_url(archive_data):
             print(f"[OHAASA] archive already exists: {output['date']}", flush=True)
             return
         print(f"[OHAASA] archive exists but is invalid, replacing: {output['date']}", flush=True)

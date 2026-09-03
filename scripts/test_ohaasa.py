@@ -116,6 +116,7 @@ def main():
     print("=" * 40)
     print(f"Official page URL: {PAGE_URL}")
     print(f"Official data URL: {DATA_URL}")
+    print(f"Saved sourceUrl: {PAGE_URL}")
     print(f"Page HTTP: {page_response.status} ({page_fetch_mode})")
     print(f"Data HTTP: {data_response.status} ({data_fetch_mode})")
     print(f"Content-Type page: {page_response.headers.get('content-type')}")

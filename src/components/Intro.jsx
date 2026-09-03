@@ -50,6 +50,8 @@ const bonusMessages = [
   '오늘도 반짝이는 하루가 될 거야 ✦',
 ]
 
+const ohaasaRevealMessages = ['두근... ♡', '두근두근... ♡♡', '오늘 수진이의 운세는? ✦']
+
 const getRandomItem = (items) => items[Math.floor(Math.random() * items.length)]
 
 const getKstDateString = () => {
@@ -88,20 +90,94 @@ const isValidOhaasaData = (data) => {
   return Boolean(isLibra && data.fortune.rank !== undefined && data.fortune.rank !== null && data.fortune.messageJa)
 }
 
+const splitKoreanSentences = (message) => {
+  if (!message) {
+    return []
+  }
+
+  return message
+    .match(/[^.!?。！？]+[.!?。！？]+|[^.!?。！？]+$/g)
+    ?.map((sentence) => sentence.trim())
+    .filter(Boolean) ?? []
+}
+
+const getValidOhaasaSourceUrl = (sourceUrl) => {
+  if (typeof sourceUrl !== 'string' || !sourceUrl.trim()) {
+    return null
+  }
+
+  try {
+    const url = new URL(sourceUrl)
+    return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : null
+  } catch {
+    return null
+  }
+}
+
+const formatOhaasaUpdatedTime = (timestamp) => {
+  if (typeof timestamp !== 'string' || !timestamp.trim()) {
+    return ''
+  }
+
+  const date = new Date(timestamp)
+  if (Number.isNaN(date.getTime())) {
+    return ''
+  }
+
+  const parts = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Seoul',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    hourCycle: 'h23',
+  }).formatToParts(date)
+  const timeParts = Object.fromEntries(parts.map((part) => [part.type, part.value]))
+
+  return `${timeParts.hour}:${timeParts.minute}`
+}
+
 function Intro() {
   const [isPhotoPopupOpen, setIsPhotoPopupOpen] = useState(false)
   const [isOhaasaPopupOpen, setIsOhaasaPopupOpen] = useState(false)
   const [ohaasaData, setOhaasaData] = useState(null)
   const [isOhaasaLoading, setIsOhaasaLoading] = useState(false)
   const [ohaasaError, setOhaasaError] = useState(null)
+  const [hasRevealedOhaasa, setHasRevealedOhaasa] = useState(false)
+  const [ohaasaRevealStep, setOhaasaRevealStep] = useState(0)
+  const [isUpdateInfoOpen, setIsUpdateInfoOpen] = useState(false)
   const [selectedCardIndex, setSelectedCardIndex] = useState(null)
   const [isPickingCard, setIsPickingCard] = useState(false)
   const [bonusMessage, setBonusMessage] = useState('')
   const pickingTimerRef = useRef(null)
+  const ohaasaRevealTimersRef = useRef([])
 
   useEffect(() => {
-    return () => window.clearTimeout(pickingTimerRef.current)
+    return () => {
+      window.clearTimeout(pickingTimerRef.current)
+      ohaasaRevealTimersRef.current.forEach((timerId) => window.clearTimeout(timerId))
+    }
   }, [])
+
+  useEffect(() => {
+    ohaasaRevealTimersRef.current.forEach((timerId) => window.clearTimeout(timerId))
+    ohaasaRevealTimersRef.current = []
+
+    if (!isOhaasaPopupOpen || hasRevealedOhaasa) {
+      return undefined
+    }
+
+    setOhaasaRevealStep(0)
+    ohaasaRevealTimersRef.current = [
+      window.setTimeout(() => setOhaasaRevealStep(1), 900),
+      window.setTimeout(() => setOhaasaRevealStep(2), 1800),
+      window.setTimeout(() => setHasRevealedOhaasa(true), 2700),
+    ]
+
+    return () => {
+      ohaasaRevealTimersRef.current.forEach((timerId) => window.clearTimeout(timerId))
+      ohaasaRevealTimersRef.current = []
+    }
+  }, [hasRevealedOhaasa, isOhaasaPopupOpen])
 
   const showBonusMessage = () => {
     setBonusMessage(getRandomItem(bonusMessages))
@@ -147,6 +223,11 @@ function Intro() {
     }
   }
 
+  const closeOhaasaPopup = () => {
+    setIsOhaasaPopupOpen(false)
+    setIsUpdateInfoOpen(false)
+  }
+
   const drawRikuCard = () => {
     window.clearTimeout(pickingTimerRef.current)
     setIsPickingCard(true)
@@ -163,8 +244,11 @@ function Intro() {
   const ohaasaZodiacKo = ohaasaData?.person.zodiacKo ?? '천칭자리'
   const ohaasaZodiacJa = ohaasaData?.person.zodiacJa ?? 'てんびん座'
   const ohaasaMessage = ohaasaData?.fortune.messageKo ?? ohaasaData?.fortune.messageJa
+  const ohaasaMessageKoSentences = splitKoreanSentences(ohaasaData?.fortune.messageKo)
   const ohaasaLuckyItem = ohaasaData?.fortune.lucky?.itemKo ?? ohaasaData?.fortune.lucky?.itemJa ?? '비밀 아이템 ♡'
-  const ohaasaSourceName = ohaasaData?.source?.name ?? 'ABC TV おはよう朝日です'
+  const ohaasaSourceUrl = getValidOhaasaSourceUrl(ohaasaData?.sourceUrl)
+  const ohaasaUpdatedTime = formatOhaasaUpdatedTime(ohaasaData?.updatedAt)
+  const shouldShowOhaasaReveal = !hasRevealedOhaasa
 
   return (
     <section className="scene homepage-scene">
@@ -177,8 +261,7 @@ function Intro() {
               <span className="homepage-label">GOOD LUCK TODAY</span>
               <p>수진이를 위한 응원 페이지 즐겨주시와요 ㅎ-ㅎ</p>
               <button className="ohaasa-trigger" type="button" onClick={openOhaasaPopup}>
-                <span>★ TODAY'S OHAASA ★</span>
-                오늘의 오하아사 ♡
+                <span>오늘의 오하아사</span>
               </button>
             </div>
             <img className="typography-image main-window-good-luck" src="/assets/typography/good-luck.png" alt="GOOD LUCK!" />
@@ -192,7 +275,7 @@ function Intro() {
               <span>⭐ TODAY'S OHAASA</span>
               <div className="popup-window-controls">
                 <span aria-hidden="true">□</span>
-                <button type="button" onClick={() => setIsOhaasaPopupOpen(false)} aria-label="Close Ohaasa popup">
+                <button type="button" onClick={closeOhaasaPopup} aria-label="Close Ohaasa popup">
                   X
                 </button>
               </div>
@@ -205,14 +288,26 @@ function Intro() {
                 ✦
               </span>
 
-              {isOhaasaLoading && (
+              {shouldShowOhaasaReveal && (
+                <div className="ohaasa-reveal-card" role="status" aria-live="polite">
+                  <span className="ohaasa-reveal-badge">♡ SECRET FORTUNE ♡</span>
+                  <p key={ohaasaRevealStep}>{ohaasaRevealMessages[ohaasaRevealStep]}</p>
+                  <div className="ohaasa-reveal-sparkles" aria-hidden="true">
+                    <i>♡</i>
+                    <i>✦</i>
+                    <i>★</i>
+                  </div>
+                </div>
+              )}
+
+              {!shouldShowOhaasaReveal && isOhaasaLoading && (
                 <div className="ohaasa-status-card" role="status" aria-live="polite">
                   <span className="ohaasa-loading-sparkle">★</span>
                   <p>★ 오늘의 운세를 불러오는 중... ★</p>
                 </div>
               )}
 
-              {!isOhaasaLoading && ohaasaError === 'stale' && (
+              {!shouldShowOhaasaReveal && !isOhaasaLoading && ohaasaError === 'stale' && (
                 <div className="ohaasa-status-card ohaasa-fallback-card" role="status">
                   <span>♡ ★ ♡</span>
                   <p>오늘의 오하아사를 아직 가져오지 못했어요 ♡</p>
@@ -220,7 +315,7 @@ function Intro() {
                 </div>
               )}
 
-              {!isOhaasaLoading && ohaasaError === 'error' && (
+              {!shouldShowOhaasaReveal && !isOhaasaLoading && ohaasaError === 'error' && (
                 <div className="ohaasa-status-card ohaasa-fallback-card" role="status">
                   <span>✦ ㅠ.ㅠ ✦</span>
                   <p>오하아사를 불러오지 못했어요 ㅠ.ㅠ</p>
@@ -228,8 +323,8 @@ function Intro() {
                 </div>
               )}
 
-              {!isOhaasaLoading && !ohaasaError && ohaasaData && (
-                <>
+              {!shouldShowOhaasaReveal && !isOhaasaLoading && !ohaasaError && ohaasaData && (
+                <div className="ohaasa-result-reveal">
                   <div className="ohaasa-date">{formatOhaasaDate(ohaasaData.date)}</div>
 
                   <section className="ohaasa-zodiac-card" aria-label="Libra horoscope">
@@ -242,7 +337,15 @@ function Intro() {
 
                   <section className="ohaasa-message-card">
                     <span>TODAY'S MESSAGE</span>
-                    <p>{ohaasaMessage}</p>
+                    {ohaasaMessageKoSentences.length > 0 ? (
+                      <p className="ohaasa-message-ko">
+                        {ohaasaMessageKoSentences.map((sentence, index) => (
+                          <span key={`${sentence}-${index}`}>{sentence}</span>
+                        ))}
+                      </p>
+                    ) : (
+                      <p>{ohaasaMessage}</p>
+                    )}
                   </section>
 
                   <section className="ohaasa-lucky">
@@ -250,8 +353,47 @@ function Intro() {
                     <p>{ohaasaLuckyItem}</p>
                   </section>
 
-                  <p className="ohaasa-source">{ohaasaSourceName}</p>
-                </>
+                  {ohaasaSourceUrl && (
+                    <a className="ohaasa-source-link" href={ohaasaSourceUrl} target="_blank" rel="noopener noreferrer">
+                      오하아사 원문 보기 ↗
+                    </a>
+                  )}
+
+                  <div className="ohaasa-update-info">
+                    <button
+                      className="ohaasa-update-toggle"
+                      type="button"
+                      aria-expanded={isUpdateInfoOpen}
+                      aria-controls="ohaasa-update-panel"
+                      onClick={() => setIsUpdateInfoOpen((isOpen) => !isOpen)}
+                    >
+                      ⓘ 업데이트 정보
+                    </button>
+                    <div
+                      id="ohaasa-update-panel"
+                      className={`ohaasa-update-panel${isUpdateInfoOpen ? ' is-open' : ''}`}
+                      aria-hidden={!isUpdateInfoOpen}
+                    >
+                      <div className="ohaasa-update-panel-inner">
+                        <span>UPDATE INFO</span>
+                        <p>오하아사는 매일 아침 자동으로 업데이트돼요.</p>
+                        <dl>
+                          <div>
+                            <dt>업데이트 확인</dt>
+                            <dd>08:10 · 08:40 · 09:20 · 10:20</dd>
+                          </div>
+                          {ohaasaUpdatedTime && (
+                            <div>
+                              <dt>마지막 업데이트</dt>
+                              <dd>{ohaasaUpdatedTime}</dd>
+                            </div>
+                          )}
+                        </dl>
+                        <p>원문 공개 시점에 따라 반영이 조금 늦어질 수 있어요.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </div>

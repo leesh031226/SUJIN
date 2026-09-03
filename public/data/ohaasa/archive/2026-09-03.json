@@ -6,6 +6,7 @@
     "type": "official-json",
     "url": "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
   },
+  "sourceUrl": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
   "status": "success",
   "updatedAt": "2026-09-03T13:14:48.066458+09:00",
   "fetch": {

@@ -13,6 +13,7 @@ from urllib.request import Request, urlopen
 
 
 SOURCE_URL = "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
+DEEPL_TRANSLATE_URL = "https://api.deepl.com/v2/translate"
 OUTPUT_DIR = Path("public/data/ohaasa")
 LATEST_PATH = OUTPUT_DIR / "latest.json"
 ARCHIVE_DIR = OUTPUT_DIR / "archive"
@@ -60,18 +61,28 @@ class ValidationError(OhaasaError):
     pass
 
 
+class TranslationError(OhaasaError):
+    pass
+
+
 def today_jst():
     return datetime.now(JST).strftime("%Y-%m-%d")
 
 
-def is_valid_current_latest(path, expected_date):
+def is_valid_current_latest(path, expected_date, require_translations=False):
     try:
         with path.open(encoding="utf-8") as file:
             data = json.load(file)
     except (OSError, JSONDecodeError):
         return False
 
-    return is_valid_saved_record(data, expected_date)
+    if not is_valid_saved_record(data, expected_date):
+        return False
+
+    if require_translations and not has_required_translations(data):
+        return False
+
+    return True
 
 
 def is_valid_saved_record(data, expected_date):
@@ -97,6 +108,30 @@ def is_valid_saved_record(data, expected_date):
     message_ja = fortune.get("messageJa")
     if not isinstance(message_ja, str) or not message_ja.strip():
         return False
+
+    return True
+
+
+def has_required_translations(data):
+    fortune = data.get("fortune", {})
+    if not isinstance(fortune.get("messageKo"), str) or not fortune["messageKo"].strip():
+        return False
+
+    lucky = fortune.get("lucky", {})
+    if lucky.get("itemJa") and (not isinstance(lucky.get("itemKo"), str) or not lucky["itemKo"].strip()):
+        return False
+
+    all_signs = data.get("allSigns", [])
+    if not isinstance(all_signs, list):
+        return False
+
+    for sign in all_signs:
+        if not isinstance(sign.get("messageKo"), str) or not sign["messageKo"].strip():
+            return False
+
+        sign_lucky = sign.get("lucky", {})
+        if sign_lucky.get("itemJa") and (not isinstance(sign_lucky.get("itemKo"), str) or not sign_lucky["itemKo"].strip()):
+            return False
 
     return True
 
@@ -268,6 +303,102 @@ def validate_data(latest, signs):
     return libra
 
 
+def translate_texts_ja_to_ko(texts):
+    api_key = os.environ.get("DEEPL_API_KEY")
+    unique_texts = []
+    seen = set()
+
+    for text in texts:
+        if not isinstance(text, str) or not text.strip():
+            continue
+
+        normalized = text.strip()
+        if normalized not in seen:
+            seen.add(normalized)
+            unique_texts.append(normalized)
+
+    if not unique_texts:
+        return {}
+
+    if not api_key:
+        print("[OHAASA] DEEPL_API_KEY is not set; keeping Japanese text without Korean translations", flush=True)
+        return {}
+
+    request_body = json.dumps(
+        {
+            "text": unique_texts,
+            "source_lang": "JA",
+            "target_lang": "KO",
+        }
+    ).encode("utf-8")
+
+    request = Request(
+        DEEPL_TRANSLATE_URL,
+        data=request_body,
+        headers={
+            "Authorization": f"DeepL-Auth-Key {api_key}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        method="POST",
+    )
+
+    try:
+        with urlopen(request, timeout=20) as response:
+            if response.status != 200:
+                raise TranslationError(f"DeepL HTTP {response.status}")
+
+            payload = json.loads(response.read().decode("utf-8"))
+    except HTTPError as error:
+        raise TranslationError(f"DeepL HTTP {error.code}") from error
+    except URLError as error:
+        raise TranslationError(f"DeepL request failed: {error.reason}") from error
+    except JSONDecodeError as error:
+        raise TranslationError("DeepL returned invalid JSON") from error
+
+    translations = payload.get("translations")
+    if not isinstance(translations, list) or len(translations) != len(unique_texts):
+        raise TranslationError("DeepL response shape did not match request")
+
+    translated = {}
+    for original, item in zip(unique_texts, translations):
+        translated_text = item.get("text") if isinstance(item, dict) else None
+        if isinstance(translated_text, str) and translated_text.strip():
+            translated[original] = translated_text.strip()
+
+    if len(translated) != len(unique_texts):
+        raise TranslationError("DeepL returned an empty translation")
+
+    print(f"[OHAASA] translated {len(translated)} unique Japanese texts with DeepL", flush=True)
+    return translated
+
+
+def apply_korean_translations(signs):
+    texts = []
+    for sign in signs:
+        texts.append(sign.get("messageJa"))
+        texts.append(sign.get("lucky", {}).get("itemJa"))
+
+    try:
+        translations = translate_texts_ja_to_ko(texts)
+    except TranslationError as error:
+        print(f"[OHAASA] translation failed: {error}; keeping Japanese text", file=sys.stderr, flush=True)
+        return
+
+    if not translations:
+        return
+
+    for sign in signs:
+        message_ja = sign.get("messageJa")
+        if isinstance(message_ja, str):
+            sign["messageKo"] = translations.get(message_ja.strip()) or sign.get("messageKo")
+
+        lucky = sign.get("lucky", {})
+        lucky_ja = lucky.get("itemJa")
+        if isinstance(lucky_ja, str):
+            lucky["itemKo"] = translations.get(lucky_ja.strip()) or lucky.get("itemKo")
+
+
 def build_output(latest, signs, libra, ssl_mode):
     date = normalize_date(latest.get("onair_date"))
     updated_at = datetime.now(JST).isoformat()
@@ -292,10 +423,10 @@ def build_output(latest, signs, libra, ssl_mode):
         "fortune": {
             "rank": libra["rank"],
             "messageJa": libra["messageJa"],
-            "messageKo": None,
+            "messageKo": libra["messageKo"],
             "lucky": {
                 "itemJa": libra["lucky"]["itemJa"],
-                "itemKo": None,
+                "itemKo": libra["lucky"]["itemKo"],
             },
         },
         "allSigns": signs,
@@ -349,13 +480,15 @@ def load_json_file(path):
 def main():
     try:
         current_date = today_jst()
-        if is_valid_current_latest(LATEST_PATH, current_date):
+        require_translations = bool(os.environ.get("DEEPL_API_KEY"))
+        if is_valid_current_latest(LATEST_PATH, current_date, require_translations):
             print("[OHAASA] today's valid data already exists, skipping", flush=True)
             return 0
 
         payload, ssl_mode = fetch_official_json()
         latest, signs = parse_signs(payload)
         libra = validate_data(latest, signs)
+        apply_korean_translations(signs)
         output = build_output(latest, deepcopy(signs), libra, ssl_mode)
 
         print(f"[OHAASA] Libra rank: {libra['rank']}", flush=True)

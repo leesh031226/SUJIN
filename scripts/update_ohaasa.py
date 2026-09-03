@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 
 
 SOURCE_URL = "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
-DEEPL_TRANSLATE_URL = "https://api.deepl.com/v2/translate"
+DEEPL_TRANSLATE_URL = "https://api-free.deepl.com/v2/translate"
 OUTPUT_DIR = Path("public/data/ohaasa")
 LATEST_PATH = OUTPUT_DIR / "latest.json"
 ARCHIVE_DIR = OUTPUT_DIR / "archive"

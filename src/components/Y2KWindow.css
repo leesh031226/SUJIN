@@ -1,0 +1,110 @@
+.y2k-window {
+  position: relative;
+  overflow: visible;
+  background: var(--surface-card);
+  border: 3px solid var(--wish-black);
+  border-radius: 0.9rem 0.55rem 1rem 0.65rem;
+  box-shadow: 7px 7px 0 var(--wish-black), 12px 12px 0 rgba(96, 138, 236, 0.34);
+  transform: rotate(-0.4deg);
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end);
+}
+
+.y2k-window:hover {
+  transform: translate(-2px, -2px) rotate(0.2deg);
+  box-shadow: 9px 9px 0 var(--wish-black), 14px 14px 0 rgba(254, 179, 230, 0.58);
+}
+
+.y2k-window::before {
+  content: "";
+  position: absolute;
+  inset: 0.45rem;
+  border: 2px dotted rgba(4, 3, 4, 0.24);
+  border-radius: 0.55rem;
+  pointer-events: none;
+}
+
+.y2k-window-titlebar {
+  min-height: 2.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.38rem 0.52rem 0.38rem 0.75rem;
+  border-bottom: 3px solid var(--wish-black);
+  border-radius: 0.62rem 0.32rem 0 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.36) 1px, transparent 1px),
+    var(--window-color);
+  background-size: 9px 9px, auto;
+}
+
+.y2k-window-title {
+  font-family: var(--font-mono);
+  font-size: clamp(0.74rem, 2vw, 0.88rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--wish-black);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.y2k-window-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex: 0 0 auto;
+}
+
+.y2k-window-control {
+  width: 0.92rem;
+  height: 0.92rem;
+  display: inline-block;
+  background: var(--wish-cream);
+  border: 2px solid var(--wish-black);
+  box-shadow: 2px 2px 0 rgba(4, 3, 4, 0.22);
+}
+
+.y2k-window-minimize {
+  background: var(--wish-green);
+}
+
+.y2k-window-maximize {
+  background: var(--wish-blue);
+}
+
+.y2k-window-close {
+  background: var(--wish-coral);
+}
+
+.y2k-window-body {
+  position: relative;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.y2k-window-pink {
+  --window-color: var(--wish-pink);
+}
+
+.y2k-window-blue {
+  --window-color: var(--wish-blue);
+}
+
+.y2k-window-lavender {
+  --window-color: var(--wish-lavender);
+}
+
+.y2k-window-green {
+  --window-color: var(--wish-green);
+}
+
+@media (max-width: 520px) {
+  .y2k-window {
+    border-width: 2px;
+    box-shadow: 5px 5px 0 var(--wish-black), 8px 8px 0 rgba(96, 138, 236, 0.28);
+  }
+
+  .y2k-window-titlebar {
+    border-bottom-width: 2px;
+  }
+}

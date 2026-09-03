@@ -345,6 +345,50 @@ button {
   word-break: keep-all;
 }
 
+.ohaasa-trigger {
+  display: inline-grid;
+  justify-items: center;
+  gap: 0.18rem;
+  min-height: 2.8rem;
+  padding: 0.45rem 0.75rem;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.46) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46) 1px, transparent 1px),
+    var(--wish-blue);
+  background-size: 8px 8px;
+  border: 2px solid var(--wish-black);
+  color: var(--wish-black);
+  box-shadow: 3px 3px 0 var(--wish-black), 6px 6px 0 rgba(254, 179, 230, 0.72);
+  font-family: var(--font-rounded);
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1.2;
+  transform: rotate(1.2deg);
+  transition: transform 110ms steps(2, end), box-shadow 110ms steps(2, end);
+}
+
+.ohaasa-trigger span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.ohaasa-trigger:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 4px 4px 0 var(--wish-black), 8px 8px 0 rgba(153, 244, 146, 0.7);
+}
+
+.ohaasa-trigger:active {
+  transform: translate(2px, 2px) rotate(-1deg);
+  box-shadow: 1px 1px 0 var(--wish-black), 3px 3px 0 rgba(153, 244, 146, 0.7);
+}
+
+.ohaasa-trigger:focus-visible,
+.ohaasa-popup button:focus-visible {
+  outline: 3px dashed var(--wish-deep-blue);
+  outline-offset: 4px;
+}
+
 .main-window-good-luck {
   width: min(100%, 18rem);
   margin-block: -3.2rem;
@@ -779,6 +823,269 @@ button.polaroid-card {
     linear-gradient(180deg, rgba(254, 179, 230, 0.25) 1px, transparent 1px),
     var(--wish-cream);
   background-size: 14px 14px;
+}
+
+.ohaasa-popup {
+  position: fixed;
+  z-index: 21;
+  left: 50%;
+  top: 50%;
+  width: min(92vw, 28rem);
+  max-height: calc(100dvh - 2rem);
+  overflow: hidden auto;
+  background: var(--white);
+  border: 3px solid var(--wish-black);
+  border-radius: 0.3rem;
+  box-shadow: 8px 8px 0 var(--wish-black), 14px 14px 0 rgba(153, 244, 146, 0.72);
+  transform: translate(-50%, -50%) rotate(-0.8deg);
+}
+
+.ohaasa-popup-title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0.55rem;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.36) 1px, transparent 1px),
+    var(--wish-green);
+  background-size: 9px 9px;
+  border-bottom: 3px solid var(--wish-black);
+  color: var(--wish-black);
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.ohaasa-popup-body {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.8rem;
+  padding: clamp(0.9rem, 3vw, 1.15rem);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(254, 179, 230, 0.72) 0 0.22rem, transparent 0.24rem),
+    radial-gradient(circle at 88% 72%, rgba(114, 212, 244, 0.58) 0 0.24rem, transparent 0.26rem),
+    linear-gradient(90deg, rgba(114, 212, 244, 0.2) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(114, 212, 244, 0.2) 1px, transparent 1px),
+    var(--wish-cream);
+  background-size: auto, auto, 14px 14px, 14px 14px, auto;
+}
+
+.ohaasa-decor {
+  position: absolute;
+  z-index: 1;
+  color: var(--wish-pink);
+  font-family: var(--font-mono);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--wish-black);
+  pointer-events: none;
+}
+
+.ohaasa-decor-star {
+  left: 0.8rem;
+  top: 1.1rem;
+  font-size: 1.45rem;
+  transform: rotate(-10deg);
+}
+
+.ohaasa-decor-sparkle {
+  right: 1rem;
+  top: 4.6rem;
+  color: var(--wish-blue);
+  font-size: 1.85rem;
+  transform: rotate(12deg);
+}
+
+.ohaasa-date {
+  position: relative;
+  z-index: 2;
+  padding: 0.28rem 0.65rem;
+  background: var(--white);
+  border: 2px solid var(--wish-black);
+  box-shadow: 3px 3px 0 var(--wish-pink);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.ohaasa-zodiac-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.18rem;
+  width: min(100%, 13rem);
+  padding: 0.8rem 0.7rem;
+  background: var(--white);
+  border: 3px solid var(--wish-black);
+  box-shadow: 5px 5px 0 var(--wish-black), 9px 9px 0 rgba(114, 212, 244, 0.72);
+  transform: rotate(1deg);
+}
+
+.ohaasa-zodiac {
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  aspect-ratio: 1;
+  background: var(--wish-pink);
+  border: 3px solid var(--wish-black);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 var(--wish-green);
+  font-size: 2.9rem;
+  line-height: 1;
+}
+
+.ohaasa-zodiac-card h3,
+.ohaasa-zodiac-card p,
+.ohaasa-message-card p,
+.ohaasa-lucky p,
+.ohaasa-source {
+  margin: 0;
+}
+
+.ohaasa-zodiac-card h3 {
+  font-family: var(--font-rounded);
+  font-size: 1.28rem;
+  font-weight: 900;
+}
+
+.ohaasa-zodiac-card p {
+  padding: 0.16rem 0.48rem;
+  background: #fffdf2;
+  border: 2px dotted var(--wish-black);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.ohaasa-rank {
+  position: relative;
+  z-index: 2;
+  padding: 0.42rem 0.8rem;
+  background: var(--wish-pink);
+  border: 3px solid var(--wish-black);
+  box-shadow: 4px 4px 0 var(--wish-black);
+  font-family: var(--font-rounded);
+  font-size: 1.08rem;
+  font-weight: 900;
+  transform: rotate(-2deg);
+}
+
+.ohaasa-message-card,
+.ohaasa-lucky {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 0.42rem;
+  width: min(100%, 22rem);
+  padding: 0.78rem;
+  background: var(--white);
+  border: 2px solid var(--wish-black);
+  box-shadow: 4px 4px 0 var(--wish-blue);
+}
+
+.ohaasa-message-card span,
+.ohaasa-lucky span {
+  justify-self: center;
+  padding: 0.22rem 0.52rem;
+  background: var(--wish-green);
+  border: 2px solid var(--wish-black);
+  box-shadow: 2px 2px 0 var(--wish-pink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.ohaasa-message-card p {
+  font-family: 'Nanum Pen Script', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe Print', cursive;
+  font-size: clamp(1.18rem, 4vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.ohaasa-lucky {
+  width: min(100%, 18rem);
+  background: #fffdf2;
+  box-shadow: 4px 4px 0 var(--wish-pink);
+}
+
+.ohaasa-lucky p {
+  font-family: var(--font-rounded);
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.ohaasa-source {
+  position: relative;
+  z-index: 2;
+  padding: 0.32rem 0.6rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px dotted var(--wish-black);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.ohaasa-status-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  width: min(100%, 21rem);
+  min-height: 12rem;
+  align-content: center;
+  padding: 1rem;
+  background: var(--white);
+  border: 3px solid var(--wish-black);
+  box-shadow: 5px 5px 0 var(--wish-black), 9px 9px 0 rgba(254, 179, 230, 0.72);
+  transform: rotate(1deg);
+  font-family: var(--font-rounded);
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.ohaasa-status-card span {
+  padding: 0.24rem 0.62rem;
+  background: var(--wish-green);
+  border: 2px solid var(--wish-black);
+  box-shadow: 2px 2px 0 var(--wish-blue);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.ohaasa-status-card p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.ohaasa-loading-sparkle {
+  animation: ohaasa-loading-blink 720ms steps(2, end) infinite;
+}
+
+.ohaasa-fallback-card {
+  background: #fffdf2;
+  box-shadow: 5px 5px 0 var(--wish-black), 9px 9px 0 rgba(114, 212, 244, 0.72);
+  transform: rotate(-1deg);
+}
+
+@keyframes ohaasa-loading-blink {
+  0%,
+  100% {
+    transform: scale(0.88) rotate(-8deg);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.12) rotate(8deg);
+    opacity: 1;
+  }
 }
 
 .riku-draw-panel {
@@ -1846,6 +2153,20 @@ button.polaroid-card {
     overflow: auto;
   }
 
+  .ohaasa-popup {
+    width: min(92vw, 26rem);
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .ohaasa-popup-body {
+    gap: 0.7rem;
+    padding: 0.85rem;
+  }
+
+  .ohaasa-zodiac-card {
+    width: min(100%, 12rem);
+  }
+
   .riku-draw-panel {
     min-height: 18rem;
   }
@@ -1972,6 +2293,32 @@ button.polaroid-card {
 
   .riku-photo-popup-title {
     font-size: 0.72rem;
+  }
+
+  .ohaasa-popup {
+    width: min(94vw, 21.5rem);
+  }
+
+  .ohaasa-popup-title {
+    font-size: 0.7rem;
+  }
+
+  .ohaasa-zodiac {
+    width: 3.8rem;
+    font-size: 2.45rem;
+  }
+
+  .ohaasa-zodiac-card h3 {
+    font-size: 1.08rem;
+  }
+
+  .ohaasa-rank,
+  .ohaasa-lucky p {
+    font-size: 0.98rem;
+  }
+
+  .ohaasa-message-card p {
+    font-size: 1.12rem;
   }
 
   .riku-draw-panel {

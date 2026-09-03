@@ -7,9 +7,9 @@
     "url": "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
   },
   "status": "success",
-  "updatedAt": "2026-09-03T13:23:28.335254+09:00",
+  "updatedAt": "2026-09-03T17:38:35.599194+09:00",
   "fetch": {
-    "ssl": "certifi CA bundle",
+    "ssl": "default system CA",
     "onairDate": "20260903",
     "openStatus": "2",
     "horoscopeId": "2989"

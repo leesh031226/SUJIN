@@ -1,0 +1,55 @@
+name: Update Ohaasa Horoscope
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:10, 08:40, 09:20, 10:20 in Asia/Seoul and Asia/Tokyo.
+    - cron: "10 23 * * *"
+    - cron: "40 23 * * *"
+    - cron: "20 0 * * *"
+    - cron: "20 1 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-ohaasa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip certifi
+
+      - name: Update Ohaasa horoscope data
+        run: python3 scripts/update_ohaasa.py
+
+      - name: Check data changes
+        id: changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain -- public/data/ohaasa/latest.json public/data/ohaasa/archive)" ]]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit data changes
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/ohaasa/latest.json public/data/ohaasa/archive
+          git commit -m "Update Ohaasa horoscope $(TZ=Asia/Seoul date +%F)"
+
+      - name: Push data changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: git push

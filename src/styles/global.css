@@ -1671,7 +1671,9 @@ button.polaroid-card {
 
 @media (max-width: 768px) {
   .scene {
-    padding: 1rem;
+    min-height: 100dvh;
+    padding: max(0.85rem, env(safe-area-inset-top)) max(0.85rem, env(safe-area-inset-right))
+      max(1rem, env(safe-area-inset-bottom)) max(0.85rem, env(safe-area-inset-left));
   }
 
   .scene::before,
@@ -1688,36 +1690,60 @@ button.polaroid-card {
 
   .homepage-scene {
     align-items: start;
+    min-height: 100dvh;
+    padding-block: max(0.75rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .homepage-shell {
+    width: min(100%, 28rem);
+    gap: 1rem;
   }
 
   .homepage-hero {
-    gap: 0.15rem;
-    padding-top: clamp(12.5rem, 35vw, 21rem);
+    width: 100%;
+    min-height: min(96dvh, 42rem);
+    align-content: center;
+    gap: 0;
+    padding: clamp(2.5rem, 10dvh, 5rem) 0 0.85rem;
+    overflow: hidden;
   }
 
   .this-is-for-logo {
-    width: clamp(295px, 72vw, 500px);
-    margin-bottom: clamp(-41rem, -58vw, -23rem);
+    width: min(78vw, 21rem);
+    margin-bottom: clamp(-9.8rem, -28vw, -7rem);
   }
 
   .sujin-logo {
-    width: clamp(585px, 144vw, 1020px);
+    width: min(138vw, 39rem);
+    max-width: none;
     margin-block: 0;
   }
 
   .hero-character-area {
-    margin-top: clamp(-4.3rem, -9vw, -2.4rem);
+    width: 100%;
+    margin-top: clamp(-2.2rem, -7vw, -1.25rem);
     gap: 0.2rem;
+    padding-inline: 0;
   }
 
   .hero-cat-image {
-    width: clamp(255px, 62vw, 390px);
+    width: min(62vw, 17rem);
   }
 
   .hero-cat-speech {
-    margin-left: clamp(-2rem, -5vw, -0.8rem);
-    margin-top: clamp(-3.5rem, -7vw, -1.7rem);
+    margin-left: clamp(-1.45rem, -4vw, -0.85rem);
+    margin-top: clamp(-2.6rem, -7vw, -1.55rem);
     font-size: clamp(0.9rem, 3vw, 1.15rem);
+  }
+
+  .hero-decor-heart {
+    right: clamp(0.2rem, 5vw, 1.4rem);
+    top: clamp(4.2rem, 10dvh, 6.2rem);
+  }
+
+  .hero-decor-yellow {
+    right: clamp(0.8rem, 9vw, 2.7rem);
+    bottom: clamp(1.25rem, 8dvh, 3rem);
   }
 
   .main-window-intro,
@@ -1725,8 +1751,21 @@ button.polaroid-card {
     grid-template-columns: 1fr;
   }
 
+  .main-window-intro {
+    min-height: auto;
+    gap: 0.35rem;
+    padding: 0;
+  }
+
+  .main-window-copy {
+    justify-items: center;
+    text-align: center;
+  }
+
   .main-window-good-luck {
+    width: min(78vw, 15rem);
     justify-self: center;
+    margin-block: -1.35rem -1rem;
   }
 
   .cheer-message-section {
@@ -1735,8 +1774,17 @@ button.polaroid-card {
   }
 
   .cheer-riku-photocard {
-    width: min(68vw, 13rem);
+    width: min(58vw, 12rem);
     justify-self: center;
+  }
+
+  .speech-bubble {
+    padding: 1rem 0.9rem 2.9rem;
+  }
+
+  .riku-message-text {
+    white-space: normal;
+    word-break: keep-all;
   }
 
   .speech-bubble::before {
@@ -1750,8 +1798,19 @@ button.polaroid-card {
 
   .polaroid-grid {
     grid-template-columns: 1fr;
-    width: min(100%, 23rem);
+    width: min(100%, 18.5rem);
     justify-self: center;
+  }
+
+  .polaroid-card {
+    min-height: auto;
+    padding-bottom: 1.65rem;
+  }
+
+  .polaroid-photo-slot {
+    min-height: 10.8rem;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 
   .polaroid-card-left,
@@ -1761,7 +1820,9 @@ button.polaroid-card {
   }
 
   .riku-photo-popup {
-    width: min(92vw, 28rem);
+    width: min(92vw, 25rem);
+    max-height: calc(100dvh - 1.5rem);
+    overflow: auto;
   }
 
   .riku-draw-panel {
@@ -1772,11 +1833,16 @@ button.polaroid-card {
   .riku-picking-card {
     width: min(100%, 17rem);
   }
+
+  .tamagotchi-shell {
+    transform: rotate(0deg);
+  }
 }
 
 @media (max-width: 390px) {
   .scene {
-    padding: 0.85rem;
+    padding: max(0.7rem, env(safe-area-inset-top)) max(0.7rem, env(safe-area-inset-right))
+      max(0.85rem, env(safe-area-inset-bottom)) max(0.7rem, env(safe-area-inset-left));
   }
 
   .scene-title,
@@ -1799,45 +1865,63 @@ button.polaroid-card {
 
   .homepage-hero {
     padding-inline: 0;
-    padding-top: clamp(10rem, 40vw, 15rem);
+    min-height: min(94dvh, 39rem);
+    padding-top: clamp(2.25rem, 8dvh, 4rem);
     gap: 0.1rem;
   }
 
   .this-is-for-logo {
-    width: clamp(255px, 84vw, 335px);
-    margin-bottom: clamp(-30rem, -74vw, -18rem);
+    width: min(76vw, 18rem);
+    margin-bottom: clamp(-8.1rem, -26vw, -6.25rem);
   }
 
   .sujin-logo {
-    width: clamp(518px, 168vw, 683px);
+    width: min(136vw, 34rem);
+    max-width: none;
     margin-block: 0;
   }
 
   .hero-character-area {
-    margin-top: -2.85rem;
+    margin-top: clamp(-1.9rem, -6vw, -1.2rem);
     padding-inline: 0;
   }
 
   .hero-cat-image {
-    width: clamp(235px, 72vw, 295px);
+    width: min(60vw, 14.5rem);
   }
 
   .hero-cat-speech {
-    margin-left: -1.6rem;
-    margin-top: -2.35rem;
+    margin-left: -1.25rem;
+    margin-top: -1.9rem;
     padding: 0.58rem 0.7rem;
     border-width: 2px;
     font-size: 0.82rem;
   }
 
   .hero-decor-heart {
-    right: -0.8rem;
-    top: 3.4rem;
+    right: 0;
+    top: 3.6rem;
+    width: 3rem;
   }
 
   .hero-decor-yellow {
-    right: 0.4rem;
-    bottom: 0.2rem;
+    right: 0.6rem;
+    bottom: 1.1rem;
+    width: 3.1rem;
+  }
+
+  .hero-sparkle {
+    font-size: 1.25rem;
+  }
+
+  .hero-sparkle-one {
+    left: 0.4rem;
+    top: 1rem;
+  }
+
+  .hero-sparkle-two {
+    right: 0.7rem;
+    bottom: 4.2rem;
   }
 
   .main-window-copy p,
@@ -1850,7 +1934,7 @@ button.polaroid-card {
   }
 
   .speech-bubble .riku-message-text {
-    font-size: clamp(0.95rem, 5.2vw, 1.24rem);
+    font-size: clamp(0.94rem, 4.7vw, 1.16rem);
   }
 
   .riku-message-translation {
@@ -1858,11 +1942,11 @@ button.polaroid-card {
   }
 
   .polaroid-card {
-    min-height: 16rem;
+    min-height: auto;
   }
 
   .riku-photo-popup {
-    width: min(94vw, 22rem);
+    width: min(94vw, 21.5rem);
   }
 
   .riku-photo-popup-title {

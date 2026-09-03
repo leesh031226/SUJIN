@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-03",
+  "source": {
+    "name": "ABC TV おはよう朝日です",
+    "type": "official-json",
+    "url": "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
+  },
+  "status": "success",
+  "updatedAt": "2026-09-03T13:23:28.335254+09:00",
+  "fetch": {
+    "ssl": "certifi CA bundle",
+    "onairDate": "20260903",
+    "openStatus": "2",
+    "horoscopeId": "2989"
+  },
+  "person": {
+    "name": "수진",
+    "birthday": "09-23",
+    "zodiac": "libra",
+    "zodiacKo": "천칭자리",
+    "zodiacJa": "てんびん座",
+    "horoscopeCode": "07"
+  },
+  "fortune": {
+    "rank": 4,
+    "messageJa": "期待以上の成果をＧＥＴ 素早い決断が幸運のカギ",
+    "messageKo": null,
+    "lucky": {
+      "itemJa": "ベルト",
+      "itemKo": null
+    }
+  },
+  "allSigns": [
+    {
+      "rank": 1,
+      "ranking_no": "1",
+      "horoscopeCode": "11",
+      "horoscope_st": "11",
+      "zodiac": "aquarius",
+      "zodiacKo": "물병자리",
+      "zodiacJa": "みずがめ座",
+      "messageJa": "目標を達成できる予感♪ これまでの頑張りが報われそう さらなる高みを目指して進んで",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "スニーカー",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35664",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "目標を達成できる予感♪\tこれまでの頑張りが報われそう\tさらなる高みを目指して進んで\t\tスニーカー"
+      }
+    },
+    {
+      "rank": 2,
+      "ranking_no": "2",
+      "horoscopeCode": "09",
+      "horoscope_st": "09",
+      "zodiac": "sagittarius",
+      "zodiacKo": "사수자리",
+      "zodiacJa": "いて座",
+      "messageJa": "デートのお誘いがあるかも♥ 前向きに検討するとＧＯＯＤ",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "串カツ",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35665",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "デートのお誘いがあるかも♥\t前向きに検討するとＧＯＯＤ\t\t\t串カツ"
+      }
+    },
+    {
+      "rank": 3,
+      "ranking_no": "3",
+      "horoscopeCode": "05",
+      "horoscope_st": "05",
+      "zodiac": "leo",
+      "zodiacKo": "사자자리",
+      "zodiacJa": "しし座",
+      "messageJa": "臨時収入がありウキウキ！ 欲しい物を購入してね",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "ミネラルウォーター",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35666",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "臨時収入がありウキウキ！\t欲しい物を購入してね\t\t\tミネラルウォーター"
+      }
+    },
+    {
+      "rank": 4,
+      "ranking_no": "4",
+      "horoscopeCode": "07",
+      "horoscope_st": "07",
+      "zodiac": "libra",
+      "zodiacKo": "천칭자리",
+      "zodiacJa": "てんびん座",
+      "messageJa": "期待以上の成果をＧＥＴ 素早い決断が幸運のカギ",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "ベルト",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35667",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "期待以上の成果をＧＥＴ\t素早い決断が幸運のカギ\t\t\tベルト"
+      }
+    },
+    {
+      "rank": 5,
+      "ranking_no": "5",
+      "horoscopeCode": "03",
+      "horoscope_st": "03",
+      "zodiac": "gemini",
+      "zodiacKo": "쌍둥이자리",
+      "zodiacJa": "ふたご座",
+      "messageJa": "新たな道を切り開くチャンス 周囲との会話にヒントがあるかも",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "ダンベル",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35668",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "新たな道を切り開くチャンス\t周囲との会話にヒントがあるかも\t\t\tダンベル"
+      }
+    },
+    {
+      "rank": 6,
+      "ranking_no": "6",
+      "horoscopeCode": "02",
+      "horoscope_st": "02",
+      "zodiac": "taurus",
+      "zodiacKo": "황소자리",
+      "zodiacJa": "おうし座",
+      "messageJa": "上手な節約ができそう 昼食をお弁当にすると◎",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "写真",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35669",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "上手な節約ができそう\t昼食をお弁当にすると◎\t\t\t写真"
+      }
+    },
+    {
+      "rank": 7,
+      "ranking_no": "7",
+      "horoscopeCode": "04",
+      "horoscope_st": "04",
+      "zodiac": "cancer",
+      "zodiacKo": "게자리",
+      "zodiacJa": "かに座",
+      "messageJa": "ステキな人から多くを学べる時 良いところはどんどん吸収しよう",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "野菜スープ",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35670",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "ステキな人から多くを学べる時\t良いところはどんどん吸収しよう\t\t\t野菜スープ"
+      }
+    },
+    {
+      "rank": 8,
+      "ranking_no": "8",
+      "horoscopeCode": "08",
+      "horoscope_st": "08",
+      "zodiac": "scorpio",
+      "zodiacKo": "전갈자리",
+      "zodiacJa": "さそり座",
+      "messageJa": "トラブルを未然に防げるかも 判断に迷ったら誰かに相談して",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "自転車",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35671",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "トラブルを未然に防げるかも\t判断に迷ったら誰かに相談して\t\t\t自転車"
+      }
+    },
+    {
+      "rank": 9,
+      "ranking_no": "9",
+      "horoscopeCode": "12",
+      "horoscope_st": "12",
+      "zodiac": "pisces",
+      "zodiacKo": "물고기자리",
+      "zodiacJa": "うお座",
+      "messageJa": "周りに頼りすぎてしまう日 自分の力で乗り切る努力を",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "青色",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35672",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "周りに頼りすぎてしまう日\t自分の力で乗り切る努力を\t\t\t青色"
+      }
+    },
+    {
+      "rank": 10,
+      "ranking_no": "10",
+      "horoscopeCode": "01",
+      "horoscope_st": "01",
+      "zodiac": "aries",
+      "zodiacKo": "양자리",
+      "zodiacJa": "おひつじ座",
+      "messageJa": "急な予定変更にアタフタ 落ち着いて対応すれば大丈夫",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "鉢植え",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35673",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "急な予定変更にアタフタ\t落ち着いて対応すれば大丈夫\t\t\t鉢植え"
+      }
+    },
+    {
+      "rank": 11,
+      "ranking_no": "11",
+      "horoscopeCode": "06",
+      "horoscope_st": "06",
+      "zodiac": "virgo",
+      "zodiacKo": "처녀자리",
+      "zodiacJa": "おとめ座",
+      "messageJa": "お金の貸し借りに注意が必要 勇気を出してしっかり断って",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "スコーン",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35674",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "お金の貸し借りに注意が必要\t勇気を出してしっかり断って\t\t\tスコーン"
+      }
+    },
+    {
+      "rank": 12,
+      "ranking_no": "12",
+      "horoscopeCode": "10",
+      "horoscope_st": "10",
+      "zodiac": "capricorn",
+      "zodiacKo": "염소자리",
+      "zodiacJa": "やぎ座",
+      "messageJa": "すぐに怠けてしまいそう… 作業を後回しにするのはＮＧ 今やるべき事に向き合うように",
+      "messageKo": null,
+      "lucky": {
+        "itemJa": "カメラ",
+        "itemKo": null
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "35675",
+        "horoscope_id": "2989",
+        "rawHoroscopeText": "すぐに怠けてしまいそう…\t作業を後回しにするのはＮＧ\t今やるべき事に向き合うように\t\tカメラ"
+      }
+    }
+  ]
+}

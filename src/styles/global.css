@@ -1705,17 +1705,22 @@ button.polaroid-card {
     align-content: center;
     gap: 0;
     padding: clamp(2.5rem, 10dvh, 5rem) 0 0.85rem;
-    overflow: hidden;
+    overflow: visible;
+  }
+
+  .hero-title-group {
+    width: 100%;
+    max-width: 100%;
   }
 
   .this-is-for-logo {
-    width: min(78vw, 21rem);
-    margin-bottom: clamp(-9.8rem, -28vw, -7rem);
+    width: min(82vw, 21rem);
+    margin-bottom: clamp(-7.2rem, -22vw, -5.75rem);
   }
 
   .sujin-logo {
-    width: min(138vw, 39rem);
-    max-width: none;
+    width: min(100%, 28rem);
+    max-width: 100%;
     margin-block: 0;
   }
 
@@ -1737,12 +1742,12 @@ button.polaroid-card {
   }
 
   .hero-decor-heart {
-    right: clamp(0.2rem, 5vw, 1.4rem);
+    right: clamp(0.35rem, 5vw, 1.4rem);
     top: clamp(4.2rem, 10dvh, 6.2rem);
   }
 
   .hero-decor-yellow {
-    right: clamp(0.8rem, 9vw, 2.7rem);
+    right: clamp(1rem, 9vw, 2.7rem);
     bottom: clamp(1.25rem, 8dvh, 3rem);
   }
 
@@ -1768,6 +1773,12 @@ button.polaroid-card {
     margin-block: -1.35rem -1rem;
   }
 
+  .main-window-star {
+    right: 0.25rem;
+    top: -1rem;
+    width: 3.35rem;
+  }
+
   .cheer-message-section {
     width: min(100%, 34rem);
     justify-items: center;
@@ -1780,6 +1791,16 @@ button.polaroid-card {
 
   .speech-bubble {
     padding: 1rem 0.9rem 2.9rem;
+  }
+
+  .cheer-heart {
+    right: 0;
+    width: 3.25rem;
+  }
+
+  .cheer-star {
+    left: 0;
+    width: 3.25rem;
   }
 
   .riku-message-text {
@@ -1871,13 +1892,13 @@ button.polaroid-card {
   }
 
   .this-is-for-logo {
-    width: min(76vw, 18rem);
-    margin-bottom: clamp(-8.1rem, -26vw, -6.25rem);
+    width: min(82vw, 18rem);
+    margin-bottom: clamp(-6.4rem, -20vw, -5.2rem);
   }
 
   .sujin-logo {
-    width: min(136vw, 34rem);
-    max-width: none;
+    width: min(100%, 24rem);
+    max-width: 100%;
     margin-block: 0;
   }
 
@@ -1899,15 +1920,15 @@ button.polaroid-card {
   }
 
   .hero-decor-heart {
-    right: 0;
+    right: 0.3rem;
     top: 3.6rem;
-    width: 3rem;
+    width: 2.75rem;
   }
 
   .hero-decor-yellow {
-    right: 0.6rem;
+    right: 0.9rem;
     bottom: 1.1rem;
-    width: 3.1rem;
+    width: 2.85rem;
   }
 
   .hero-sparkle {

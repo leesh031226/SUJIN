@@ -202,7 +202,6 @@ function Intro() {
 
       if (data.date !== getKstDateString()) {
         setOhaasaData(null)
-        setOhaasaError('stale')
         return
       }
 
@@ -288,6 +287,41 @@ function Intro() {
                 ✦
               </span>
 
+              <div className="ohaasa-update-info">
+                <button
+                  className="ohaasa-update-toggle"
+                  type="button"
+                  aria-expanded={isUpdateInfoOpen}
+                  aria-controls="ohaasa-update-panel"
+                  onClick={() => setIsUpdateInfoOpen((isOpen) => !isOpen)}
+                >
+                  ⓘ UPDATE INFO
+                </button>
+                <div
+                  id="ohaasa-update-panel"
+                  className={`ohaasa-update-panel${isUpdateInfoOpen ? ' is-open' : ''}`}
+                  aria-hidden={!isUpdateInfoOpen}
+                >
+                  <div className="ohaasa-update-panel-inner">
+                    <span>UPDATE INFO</span>
+                    <p>오하아사는 매일 아침 자동으로 업데이트돼요.</p>
+                    <dl>
+                      <div>
+                        <dt>업데이트 확인</dt>
+                        <dd>08:10 · 08:40 · 09:20 · 10:20</dd>
+                      </div>
+                      {ohaasaUpdatedTime && (
+                        <div>
+                          <dt>마지막 업데이트</dt>
+                          <dd>{ohaasaUpdatedTime}</dd>
+                        </div>
+                      )}
+                    </dl>
+                    <p>원문 공개 시점에 따라 반영이 조금 늦어질 수 있어요.</p>
+                  </div>
+                </div>
+              </div>
+
               {shouldShowOhaasaReveal && (
                 <div className="ohaasa-reveal-card" role="status" aria-live="polite">
                   <span className="ohaasa-reveal-badge">♡ SECRET FORTUNE ♡</span>
@@ -307,7 +341,7 @@ function Intro() {
                 </div>
               )}
 
-              {!shouldShowOhaasaReveal && !isOhaasaLoading && ohaasaError === 'stale' && (
+              {!shouldShowOhaasaReveal && !isOhaasaLoading && !ohaasaError && !ohaasaData && (
                 <div className="ohaasa-status-card ohaasa-fallback-card" role="status">
                   <span>♡ ★ ♡</span>
                   <p>오늘의 오하아사를 아직 가져오지 못했어요 ♡</p>
@@ -358,41 +392,6 @@ function Intro() {
                       오하아사 원문 보기 ↗
                     </a>
                   )}
-
-                  <div className="ohaasa-update-info">
-                    <button
-                      className="ohaasa-update-toggle"
-                      type="button"
-                      aria-expanded={isUpdateInfoOpen}
-                      aria-controls="ohaasa-update-panel"
-                      onClick={() => setIsUpdateInfoOpen((isOpen) => !isOpen)}
-                    >
-                      ⓘ 업데이트 정보
-                    </button>
-                    <div
-                      id="ohaasa-update-panel"
-                      className={`ohaasa-update-panel${isUpdateInfoOpen ? ' is-open' : ''}`}
-                      aria-hidden={!isUpdateInfoOpen}
-                    >
-                      <div className="ohaasa-update-panel-inner">
-                        <span>UPDATE INFO</span>
-                        <p>오하아사는 매일 아침 자동으로 업데이트돼요.</p>
-                        <dl>
-                          <div>
-                            <dt>업데이트 확인</dt>
-                            <dd>08:10 · 08:40 · 09:20 · 10:20</dd>
-                          </div>
-                          {ohaasaUpdatedTime && (
-                            <div>
-                              <dt>마지막 업데이트</dt>
-                              <dd>{ohaasaUpdatedTime}</dd>
-                            </div>
-                          )}
-                        </dl>
-                        <p>원문 공개 시점에 따라 반영이 조금 늦어질 수 있어요.</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               )}
             </div>

@@ -20,6 +20,7 @@ LATEST_PATH = OUTPUT_DIR / "latest.json"
 ARCHIVE_DIR = OUTPUT_DIR / "archive"
 
 JST = timezone(timedelta(hours=9), "Asia/Tokyo")
+KST = timezone(timedelta(hours=9), "Asia/Seoul")
 
 PERSON = {
     "name": "수진",
@@ -68,6 +69,14 @@ class TranslationError(OhaasaError):
 
 def today_jst():
     return datetime.now(JST).strftime("%Y-%m-%d")
+
+
+def today_kst():
+    return datetime.now(KST).strftime("%Y-%m-%d")
+
+
+def is_weekend_kst():
+    return datetime.now(KST).weekday() >= 5
 
 
 def is_valid_current_latest(path, expected_date, require_translations=False):
@@ -490,7 +499,14 @@ def load_json_file(path):
 
 def main():
     try:
-        current_date = today_jst()
+        current_date = today_kst()
+        if is_weekend_kst():
+            print(
+                "[OHAASA] Skip update: weekend horoscope data is not published on the official web endpoint",
+                flush=True,
+            )
+            return 0
+
         require_translations = bool(os.environ.get("DEEPL_API_KEY"))
         if is_valid_current_latest(LATEST_PATH, current_date, require_translations):
             print("[OHAASA] today's valid data already exists, skipping", flush=True)
@@ -498,6 +514,15 @@ def main():
 
         payload, ssl_mode = fetch_official_json()
         latest, signs = parse_signs(payload)
+        official_date = normalize_date(latest.get("onair_date"))
+        if official_date != current_date:
+            print(
+                f"[OHAASA] Skip update: official horoscope data is stale "
+                f"(today: {current_date}, onair_date: {official_date})",
+                flush=True,
+            )
+            return 0
+
         libra = validate_data(latest, signs)
         apply_korean_translations(signs)
         output = build_output(latest, deepcopy(signs), libra, ssl_mode)

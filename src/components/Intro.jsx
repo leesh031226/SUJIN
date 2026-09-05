@@ -66,6 +66,15 @@ const getKstDateString = () => {
   return `${dateParts.year}-${dateParts.month}-${dateParts.day}`
 }
 
+const isKstWeekend = () => {
+  const weekday = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Seoul',
+    weekday: 'short',
+  }).format(new Date())
+
+  return weekday === 'Sat' || weekday === 'Sun'
+}
+
 const formatOhaasaDate = (dateString) => {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateString)
 
@@ -217,7 +226,7 @@ function Intro() {
   const openOhaasaPopup = () => {
     setIsOhaasaPopupOpen(true)
 
-    if (!ohaasaData && !isOhaasaLoading) {
+    if (!isOhaasaWeekend && !ohaasaData && !isOhaasaLoading) {
       fetchOhaasaData()
     }
   }
@@ -240,6 +249,7 @@ function Intro() {
   }
 
   const selectedCard = selectedCardIndex === null ? null : rikuCards[selectedCardIndex]
+  const isOhaasaWeekend = isKstWeekend()
   const ohaasaZodiacKo = ohaasaData?.person.zodiacKo ?? '천칭자리'
   const ohaasaZodiacJa = ohaasaData?.person.zodiacJa ?? 'てんびん座'
   const ohaasaMessage = ohaasaData?.fortune.messageKo ?? ohaasaData?.fortune.messageJa
@@ -248,6 +258,7 @@ function Intro() {
   const ohaasaSourceUrl = getValidOhaasaSourceUrl(ohaasaData?.sourceUrl)
   const ohaasaUpdatedTime = formatOhaasaUpdatedTime(ohaasaData?.updatedAt)
   const shouldShowOhaasaReveal = !hasRevealedOhaasa
+  const shouldShowOhaasaWeekendGuide = isOhaasaWeekend
 
   return (
     <section className="scene homepage-scene">
@@ -334,14 +345,22 @@ function Intro() {
                 </div>
               )}
 
-              {!shouldShowOhaasaReveal && isOhaasaLoading && (
+              {!shouldShowOhaasaReveal && !shouldShowOhaasaWeekendGuide && isOhaasaLoading && (
                 <div className="ohaasa-status-card" role="status" aria-live="polite">
                   <span className="ohaasa-loading-sparkle">★</span>
                   <p>★ 오늘의 운세를 불러오는 중... ★</p>
                 </div>
               )}
 
-              {!shouldShowOhaasaReveal && !isOhaasaLoading && !ohaasaError && !ohaasaData && (
+              {!shouldShowOhaasaReveal && shouldShowOhaasaWeekendGuide && (
+                <div className="ohaasa-status-card ohaasa-fallback-card" role="status">
+                  <span>♡ WEEKEND ♡</span>
+                  <p>주말엔 오하아사도 잠시 쉬어가요 ♡</p>
+                  <p>월요일에 새로운 운세로 만나요!</p>
+                </div>
+              )}
+
+              {!shouldShowOhaasaReveal && !shouldShowOhaasaWeekendGuide && !isOhaasaLoading && !ohaasaError && !ohaasaData && (
                 <div className="ohaasa-status-card ohaasa-fallback-card" role="status">
                   <span>♡ ★ ♡</span>
                   <p>오늘의 오하아사를 아직 가져오지 못했어요 ♡</p>
@@ -349,7 +368,7 @@ function Intro() {
                 </div>
               )}
 
-              {!shouldShowOhaasaReveal && !isOhaasaLoading && ohaasaError === 'error' && (
+              {!shouldShowOhaasaReveal && !shouldShowOhaasaWeekendGuide && !isOhaasaLoading && ohaasaError === 'error' && (
                 <div className="ohaasa-status-card ohaasa-fallback-card" role="status">
                   <span>✦ ㅠ.ㅠ ✦</span>
                   <p>오하아사를 불러오지 못했어요 ㅠ.ㅠ</p>
@@ -357,7 +376,7 @@ function Intro() {
                 </div>
               )}
 
-              {!shouldShowOhaasaReveal && !isOhaasaLoading && !ohaasaError && ohaasaData && (
+              {!shouldShowOhaasaReveal && !shouldShowOhaasaWeekendGuide && !isOhaasaLoading && !ohaasaError && ohaasaData && (
                 <div className="ohaasa-result-reveal">
                   <div className="ohaasa-date">{formatOhaasaDate(ohaasaData.date)}</div>
 

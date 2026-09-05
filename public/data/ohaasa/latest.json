@@ -8,7 +8,7 @@
   },
   "sourceUrl": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
   "status": "success",
-  "updatedAt": "2026-09-04T09:57:42.874674+09:00",
+  "updatedAt": "2026-09-05T09:55:29.494473+09:00",
   "fetch": {
     "ssl": "default system CA",
     "onairDate": "20260904",
@@ -26,7 +26,7 @@
   "fortune": {
     "rank": 3,
     "messageJa": "バツグンの集中力を発揮！ 想像以上の結果を残せるよ",
-    "messageKo": "탁월한 집중력을 발휘해 보자! 상상 이상의 결과를 얻을 수 있을 거야",
+    "messageKo": "탁월한 집중력을 발휘해! 상상 이상의 결과를 얻을 수 있을 거야",
     "lucky": {
       "itemJa": "白菜",
       "itemKo": "배추"
@@ -62,7 +62,7 @@
       "zodiacKo": "양자리",
       "zodiacJa": "おひつじ座",
       "messageJa": "作業が思いどおりに進むかも 周囲からのサポートにも期待大",
-      "messageKo": "작업이 뜻대로 진행될지도 모른다. 주변의 지원도 크게 기대된다.",
+      "messageKo": "작업이 생각대로 진행될지도 모른다. 주변의 지원도 크게 기대된다.",
       "lucky": {
         "itemJa": "茶色",
         "itemKo": "갈색"
@@ -82,7 +82,7 @@
       "zodiacKo": "천칭자리",
       "zodiacJa": "てんびん座",
       "messageJa": "バツグンの集中力を発揮！ 想像以上の結果を残せるよ",
-      "messageKo": "탁월한 집중력을 발휘해 보자! 상상 이상의 결과를 얻을 수 있을 거야",
+      "messageKo": "탁월한 집중력을 발휘해! 상상 이상의 결과를 얻을 수 있을 거야",
       "lucky": {
         "itemJa": "白菜",
         "itemKo": "배추"
@@ -102,7 +102,7 @@
       "zodiacKo": "황소자리",
       "zodiacJa": "おうし座",
       "messageJa": "理想の相手と出会える予感♥ 身近な所に縁がありそう",
-      "messageKo": "이상적인 상대를 만날 수 있을 것 같은 예감♥ 가까운 곳에 인연이 있을 것 같아요",
+      "messageKo": "이상적인 상대를 만날 것 같은 예감♥ 가까운 곳에 인연이 있을 것 같아요",
       "lucky": {
         "itemJa": "バインダー",
         "itemKo": "바인더"
@@ -142,7 +142,7 @@
       "zodiacKo": "사수자리",
       "zodiacJa": "いて座",
       "messageJa": "丁寧な対応が好印象♪ 言葉遣いに気を配ると良いかも",
-      "messageKo": "정중한 응대가 좋은 인상을 줍니다♪ 말투에 신경 쓰는 게 좋을 것 같아요",
+      "messageKo": "정중한 응대가 좋은 인상을 남깁니다♪ 말투에 신경 쓰는 것이 좋을지도 모릅니다",
       "lucky": {
         "itemJa": "ティッシュケース",
         "itemKo": "티슈 케이스"
@@ -162,7 +162,7 @@
       "zodiacKo": "쌍둥이자리",
       "zodiacJa": "ふたご座",
       "messageJa": "恋の悩みを抱えてしまいそう… あまり深刻にならないでね",
-      "messageKo": "사랑 고민이 생길 것 같아… 너무 심각하게 생각하지 말아줘",
+      "messageKo": "사랑의 고민이 생길 것 같아… 너무 심각하게 생각하지 마",
       "lucky": {
         "itemJa": "香水",
         "itemKo": "향수"
@@ -202,10 +202,10 @@
       "zodiacKo": "게자리",
       "zodiacJa": "かに座",
       "messageJa": "感情のコントロールが不器用に 体を動かしてリフレッシュを",
-      "messageKo": "감정 조절이 서툴다면, 몸을 움직여 기분을 전환해 보세요",
+      "messageKo": "감정 조절이 서툴다면 몸을 움직여 기분 전환을 해보세요",
       "lucky": {
         "itemJa": "スケジュール帳",
-        "itemKo": "일정표"
+        "itemKo": "일정 수첩"
       },
       "sourceFields": {
         "horoscope_detail_id": "35684",
@@ -222,7 +222,7 @@
       "zodiacKo": "전갈자리",
       "zodiacJa": "さそり座",
       "messageJa": "不満を感じてモヤモヤ グチを言うのはやめておこう",
-      "messageKo": "불만이 들어 속이 답답하지만, 불평은 하지 말자",
+      "messageKo": "불만이 들어 속이 답답하다. 불평은 그만두자.",
       "lucky": {
         "itemJa": "紫色",
         "itemKo": "보라색"
@@ -242,7 +242,7 @@
       "zodiacKo": "염소자리",
       "zodiacJa": "やぎ座",
       "messageJa": "アクシデントに見舞われるかも きょうは慎重に過ごしてね",
-      "messageKo": "예기치 못한 일이 생길 수도 있으니 오늘은 조심해서 지내세요",
+      "messageKo": "예기치 못한 일이 생길 수도 있으니 오늘은 조심해서 지내렴",
       "lucky": {
         "itemJa": "のどあめ",
         "itemKo": "목캔디"

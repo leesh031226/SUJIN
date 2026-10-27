@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-27",
+  "source": {
+    "name": "ABC TV おはよう朝日です",
+    "type": "official-json",
+    "url": "https://www.asahi.co.jp/data/ohaasa2020/horoscope.json"
+  },
+  "sourceUrl": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "status": "success",
+  "updatedAt": "2026-10-27T11:01:31.372630+09:00",
+  "fetch": {
+    "ssl": "default system CA",
+    "onairDate": "20261027",
+    "openStatus": "2",
+    "horoscopeId": "3028"
+  },
+  "person": {
+    "name": "수진",
+    "birthday": "09-23",
+    "zodiac": "libra",
+    "zodiacKo": "천칭자리",
+    "zodiacJa": "てんびん座",
+    "horoscopeCode": "07"
+  },
+  "fortune": {
+    "rank": 3,
+    "messageJa": "皆の人気者になれる日 言葉遣いに気をつけるとＧＯＯＤ",
+    "messageKo": "모두에게 인기 있는 사람이 될 수 있는 날, 말투에 신경 쓰면 GOOD",
+    "lucky": {
+      "itemJa": "大豆",
+      "itemKo": "대두"
+    }
+  },
+  "allSigns": [
+    {
+      "rank": 1,
+      "ranking_no": "1",
+      "horoscopeCode": "02",
+      "horoscope_st": "02",
+      "zodiac": "taurus",
+      "zodiacKo": "황소자리",
+      "zodiacJa": "おうし座",
+      "messageJa": "対人関係が良好でハッピー♪ 華やかな場所に出かけてみて 楽しい１日になるよ",
+      "messageKo": "대인 관계가 원만해서 행복해♪ 화려한 곳에 나가 보면 즐거운 하루가 될 거야",
+      "lucky": {
+        "itemJa": "自転車",
+        "itemKo": "자전거"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36132",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "対人関係が良好でハッピー♪\t華やかな場所に出かけてみて\t楽しい１日になるよ\t\t自転車"
+      }
+    },
+    {
+      "rank": 2,
+      "ranking_no": "2",
+      "horoscopeCode": "09",
+      "horoscope_st": "09",
+      "zodiac": "sagittarius",
+      "zodiacKo": "사수자리",
+      "zodiacJa": "いて座",
+      "messageJa": "あきらめていた事に再挑戦 全力でぶつかっていこう",
+      "messageKo": "포기했던 일에 다시 도전해 보자. 전력을 다해 맞서 보자.",
+      "lucky": {
+        "itemJa": "水色",
+        "itemKo": "하늘색"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36133",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "あきらめていた事に再挑戦\t全力でぶつかっていこう\t\t\t水色"
+      }
+    },
+    {
+      "rank": 3,
+      "ranking_no": "3",
+      "horoscopeCode": "07",
+      "horoscope_st": "07",
+      "zodiac": "libra",
+      "zodiacKo": "천칭자리",
+      "zodiacJa": "てんびん座",
+      "messageJa": "皆の人気者になれる日 言葉遣いに気をつけるとＧＯＯＤ",
+      "messageKo": "모두에게 인기 있는 사람이 될 수 있는 날, 말투에 신경 쓰면 GOOD",
+      "lucky": {
+        "itemJa": "大豆",
+        "itemKo": "대두"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36134",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "皆の人気者になれる日\t言葉遣いに気をつけるとＧＯＯＤ\t\t\t大豆"
+      }
+    },
+    {
+      "rank": 4,
+      "ranking_no": "4",
+      "horoscopeCode": "03",
+      "horoscope_st": "03",
+      "zodiac": "gemini",
+      "zodiacKo": "쌍둥이자리",
+      "zodiacJa": "ふたご座",
+      "messageJa": "上司や先輩からの評価ＵＰ！ オリジナリティを大切にすると◎",
+      "messageKo": "상사나 선배로부터의 평가 상승! 독창성을 중시하면 ◎",
+      "lucky": {
+        "itemJa": "紺色",
+        "itemKo": "감색"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36135",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "上司や先輩からの評価ＵＰ！\tオリジナリティを大切にすると◎\t\t\t紺色"
+      }
+    },
+    {
+      "rank": 5,
+      "ranking_no": "5",
+      "horoscopeCode": "11",
+      "horoscope_st": "11",
+      "zodiac": "aquarius",
+      "zodiacKo": "물병자리",
+      "zodiacJa": "みずがめ座",
+      "messageJa": "ステキな出会いがある予感♥ お誘いがあれば迷わずＯＫを",
+      "messageKo": "멋진 만남이 있을 것 같은 예감이 들어요♥ 초대받으면 망설임 없이 OK 할게요",
+      "lucky": {
+        "itemJa": "おでん",
+        "itemKo": "오뎅"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36136",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "ステキな出会いがある予感♥\tお誘いがあれば迷わずＯＫを\t\t\tおでん"
+      }
+    },
+    {
+      "rank": 6,
+      "ranking_no": "6",
+      "horoscopeCode": "05",
+      "horoscope_st": "05",
+      "zodiac": "leo",
+      "zodiacKo": "사자자리",
+      "zodiacJa": "しし座",
+      "messageJa": "仲間の協力を得られそう 感謝の気持ちを忘れないで",
+      "messageKo": "동료들의 협력을 얻을 수 있을 것 같다. 감사하는 마음을 잊지 말자.",
+      "lucky": {
+        "itemJa": "紫色",
+        "itemKo": "보라색"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36137",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "仲間の協力を得られそう\t感謝の気持ちを忘れないで\t\t\t紫色"
+      }
+    },
+    {
+      "rank": 7,
+      "ranking_no": "7",
+      "horoscopeCode": "10",
+      "horoscope_st": "10",
+      "zodiac": "capricorn",
+      "zodiacKo": "염소자리",
+      "zodiacJa": "やぎ座",
+      "messageJa": "ずっと欲しかった物をＧＥＴ 誰かが譲ってくれるかも",
+      "messageKo": "오랫동안 갖고 싶었던 물건을 손에 넣었다. 누군가 양도해 줄지도 모른다.",
+      "lucky": {
+        "itemJa": "ブイヤベース",
+        "itemKo": "부야베스"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36138",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "ずっと欲しかった物をＧＥＴ\t誰かが譲ってくれるかも\t\t\tブイヤベース"
+      }
+    },
+    {
+      "rank": 8,
+      "ranking_no": "8",
+      "horoscopeCode": "12",
+      "horoscope_st": "12",
+      "zodiac": "pisces",
+      "zodiacKo": "물고기자리",
+      "zodiacJa": "うお座",
+      "messageJa": "あなたの思いが伝わりやすい時 ストレートな表現がオススメ",
+      "messageKo": "당신의 마음이 잘 전달될 때, 직설적인 표현을 추천합니다",
+      "lucky": {
+        "itemJa": "リゾット",
+        "itemKo": "리조또"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36139",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "あなたの思いが伝わりやすい時\tストレートな表現がオススメ\t\t\tリゾット"
+      }
+    },
+    {
+      "rank": 9,
+      "ranking_no": "9",
+      "horoscopeCode": "08",
+      "horoscope_st": "08",
+      "zodiac": "scorpio",
+      "zodiacKo": "전갈자리",
+      "zodiacJa": "さそり座",
+      "messageJa": "周りに好印象を残せるよ 謙虚な姿勢が幸運のカギ",
+      "messageKo": "주변 사람들에게 좋은 인상을 남길 수 있어. 겸손한 태도가 행운의 열쇠야.",
+      "lucky": {
+        "itemJa": "地図帳",
+        "itemKo": "지도책"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36140",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "周りに好印象を残せるよ\t謙虚な姿勢が幸運のカギ\t\t\t地図帳"
+      }
+    },
+    {
+      "rank": 10,
+      "ranking_no": "10",
+      "horoscopeCode": "04",
+      "horoscope_st": "04",
+      "zodiac": "cancer",
+      "zodiacKo": "게자리",
+      "zodiacJa": "かに座",
+      "messageJa": "急な予定変更にアタフタ 焦らず落ち着いて取り組んで",
+      "messageKo": "갑작스러운 일정 변경에 허둥지둥… 당황하지 말고 침착하게 대처하세요",
+      "lucky": {
+        "itemJa": "赤色",
+        "itemKo": "빨간색"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36141",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "急な予定変更にアタフタ\t焦らず落ち着いて取り組んで\t\t\t赤色"
+      }
+    },
+    {
+      "rank": 11,
+      "ranking_no": "11",
+      "horoscopeCode": "06",
+      "horoscope_st": "06",
+      "zodiac": "virgo",
+      "zodiacKo": "처녀자리",
+      "zodiacJa": "おとめ座",
+      "messageJa": "良くないうわさが流れるかも 普段の行動を振り返ってみては？",
+      "messageKo": "안 좋은 소문이 돌 수도 있으니 평소 행동을 되돌아보는 건 어떨까요?",
+      "lucky": {
+        "itemJa": "筆ペン",
+        "itemKo": "붓펜"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36142",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "良くないうわさが流れるかも\t普段の行動を振り返ってみては？\t\t\t筆ペン"
+      }
+    },
+    {
+      "rank": 12,
+      "ranking_no": "12",
+      "horoscopeCode": "01",
+      "horoscope_st": "01",
+      "zodiac": "aries",
+      "zodiacKo": "양자리",
+      "zodiacJa": "おひつじ座",
+      "messageJa": "チャンスを逃してしまいそう 何事も丁寧な対応を心掛けて 最後まで気を抜かずに頑張ってね",
+      "messageKo": "기회를 놓칠 것 같아. 어떤 일이든 정중하게 대처하도록 노력하고, 끝까지 긴장을 늦추지 말고 힘내렴.",
+      "lucky": {
+        "itemJa": "ししとう",
+        "itemKo": "시시토 고추"
+      },
+      "sourceFields": {
+        "horoscope_detail_id": "36143",
+        "horoscope_id": "3028",
+        "rawHoroscopeText": "チャンスを逃してしまいそう\t何事も丁寧な対応を心掛けて\t最後まで気を抜かずに頑張ってね\t\tししとう"
+      }
+    }
+  ]
+}
